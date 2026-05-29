@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Keras / TensorFlow model files (large binaries — store via Git LFS if needed)
+*.keras
+*.h5
+
+# Dataset (too large for git — download from Kaggle)
+dataset/
+
+# Training outputs
+outputs/
+*.png
+!docs/banner.png
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Streamlit
+.streamlit/secrets.toml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
