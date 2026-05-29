@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/banner.png" alt="Pneumonia Detection Using Deep Learning" width="100%" />
+  <img src="docs/banner-upper.png" alt="Pneumonia Detection Using Deep Learning" width="100%" />
 </p>
 
 <p align="center">
